@@ -1,0 +1,37 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: subAdmin
+  namespace: monitoring
+rules:
+  - apiGroups:
+    # core
+     - ""
+    resources:
+      - "pods"
+      - "services"
+      - "resourcequotas"
+      - "secrets"
+      - "configmaps"
+      - "events"
+      - "secrets"
+    verbs:
+      - "list"
+      - "get"
+      - "create"
+      - "delete"
+      - "update"
+      - "watch"
+  - apiGroups:
+     - "apps"
+    resources:
+      - "daemonsets"
+      - "deployments"
+      - "replicasets "
+    verbs:
+      - "list"
+      - "get"
+      - "create"
+      - "delete"
+      - "update"
+      - "watch"

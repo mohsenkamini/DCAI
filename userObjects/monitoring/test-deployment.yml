@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-exporter
+  namespace: monitoring
+  labels:
+    type: monitoring-agent
+    
+spec:
+  template:
+    metadata:
+      name: node-exporter-pod
+      labels:
+        app: node-exporter
+        type: monitoring-agent
+    spec:
+      containers:
+        - name: node-exporter-container
+          image: bitnami/node-exporter:latest
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "10M"
+            limits:
+              cpu: "200m"
+              memory: "20M"
+  replicas: 20
+  selector:                     # only contain these pods in replicaset
+    matchLabels:
+      app: node-exporter

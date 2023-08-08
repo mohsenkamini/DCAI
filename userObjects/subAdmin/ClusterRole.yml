@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: subAdmin
+  namespace: monitoring
+rules:
+  - apiGroups:
+    # core
+     - ""
+    resources:
+      - "nodes"
+    verbs:
+      - "list"
+      - "get"
+      - "watch"
