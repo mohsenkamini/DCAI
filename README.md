@@ -34,4 +34,7 @@ The certificates are handled within the [certificates directory](https://github.
 
 ### Cluster Backup
 
-
+~~~
+48 23 * * * /usr/bin/cluster-get-all-backup.sh /usr/share/backups/get-all/
+49 23 * * 5 /usr/bin/keep-n-backups.sh /usr/share/backups/get-all/ 8
+~~~
