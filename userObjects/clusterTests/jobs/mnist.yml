@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mnist-cluster-test
+  labels:
+    type: gpu
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      nodeSelector:
+        name: worker02
+      containers:
+        - name: mnist-test
+          image: registry.mohsenkamini.ir:5000/test/mnist-test:0.0.0
+          

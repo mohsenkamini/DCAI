@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mnist-cluster-test
+  labels:
+    type: gpu
+spec:
+  containers:
+    - name: mnist-test
+      image: registry.mohsenkamini.ir:5000/test/mnist-test:0.0.0
+      
