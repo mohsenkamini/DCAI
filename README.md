@@ -2,7 +2,15 @@
 Distributed Computing for Artificial Intellegence over k8s.
 
 ### Network & Internet setup
-The following [file]() will provide complete internet connection on hosts.
+The following [file](https://github.com/mohsenkamini/SBU-DCAI/blob/main/network/hotspot.sh)(./network/hotspot.sh) will provide complete internet connection on hosts.
+
+Make it run frequently:
+~~~
+cp ./network/hotspot.sh /bin/hotspot.sh
+chown root:root /bin/hotspot.sh
+chmod 700 /bin/hotspot.sh
+echo "*/30 * * * * root /bin/bash /bin/hotspot.sh" > /etc/cron.d/hotspot
+~~~
 
 ### Kubernetes setup
 
