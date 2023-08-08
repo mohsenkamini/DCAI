@@ -30,7 +30,7 @@ These are the needed documents to implement gpu operator:
 ### Sub Admin access
 The `userObjects` directory contains any kubernetes objects that are created by us. The access for a subAdmin is granted with roles and cluster roles within the [subAdmin directory](https://github.com/mohsenkamini/SBU-DCAI/tree/main/userObjects/subAdmin).
 
-The certificates are handled within the [certificates directory]()
+The certificates are handled within the [certificates directory](https://github.com/mohsenkamini/SBU-DCAI/tree/main/userObjects/certificates)
 
 ### Cluster Backup
 
