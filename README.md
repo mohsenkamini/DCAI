@@ -1,6 +1,13 @@
 # SBU DCAI
 Distributed Computing for Artificial Intellegence over k8s.
-
+## Table of Contents
+- [Network & Internet setup](#network--internet-setup)
+- [Kubernetes setup](#kubernetes-setup)
+- [GPU configuration for K8s](#gpu-configuration-for-k8s)
+  - [Node Feature Discovery (NFD)](#node-feature-discovery-nfd)
+  - [Nvidia GPU operator](#nvidia-gpu-operator)
+- [Sub Admin access](#sub-admin-access)
+- [Cluster Backup](#cluster-backup)
 ### Network & Internet setup
 The following [file](https://github.com/mohsenkamini/SBU-DCAI/blob/main/network/hotspot.sh)(./network/hotspot.sh) will provide complete internet connection on hosts.
 
