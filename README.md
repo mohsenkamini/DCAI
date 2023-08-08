@@ -28,13 +28,16 @@ These are the needed documents to implement gpu operator:
 - [getting started](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html)
 
 ### Sub Admin access
-The `userObjects` directory contains any kubernetes objects that are created by us. The access for a subAdmin is granted with roles and cluster roles within the [subAdmin directory](https://github.com/mohsenkamini/SBU-DCAI/tree/main/userObjects/subAdmin).
+The `userObjects` directory contains any kubernetes objects that are created by us. The access for a subAdmin is granted with roles and cluster roles within the [subAdmin directory](./userObjects/subAdmin).
 
-The certificates are handled within the [certificates directory](https://github.com/mohsenkamini/SBU-DCAI/tree/main/userObjects/certificates)
+The certificates are handled within the [certificates directory](./userObjects/certificates)
 
 ### Cluster Backup
+The scripts to get backups are in [this directory](./backup/). currently only support a `kubectl get all -A` as backup.
 
+make that run frequently:
 ~~~
-48 23 * * * /usr/bin/cluster-get-all-backup.sh /usr/share/backups/get-all/
-49 23 * * 5 /usr/bin/keep-n-backups.sh /usr/share/backups/get-all/ 8
+cp ./backup/* /usr/bin/
+echo "48 23 * * * /usr/bin/cluster-get-all-backup.sh /usr/share/backups/get-all/ \
+49 23 * * 5 /usr/bin/keep-n-backups.sh /usr/share/backups/get-all/ 8 " > /etc/cron.d/backup
 ~~~
