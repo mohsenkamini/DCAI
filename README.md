@@ -38,6 +38,6 @@ The scripts to get backups are in [this directory](./backup/). currently only su
 make that run frequently:
 ~~~
 cp ./backup/* /usr/bin/
-echo "48 23 * * * /usr/bin/cluster-get-all-backup.sh /usr/share/backups/get-all/
-49 23 * * 5 /usr/bin/keep-n-backups.sh /usr/share/backups/get-all/ 8 " > /etc/cron.d/backup
+echo "48 23 * * * root /usr/bin/cluster-get-all-backup.sh /usr/share/backups/get-all/
+49 23 * * 5 root /usr/bin/keep-n-backups.sh /usr/share/backups/get-all/ 8 " > /etc/cron.d/backup
 ~~~
