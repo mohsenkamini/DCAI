@@ -1,5 +1,5 @@
-# SBU_HPC
-HPC over k8s
+# SBU DCAI
+Distributed Computing for Artificial Intellegence over k8s.
 
 
 ### Kubernetes setup
