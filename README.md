@@ -17,7 +17,10 @@ cp ./network/hotspot.sh /bin/hotspot.sh
 chown root:root /bin/hotspot.sh
 chmod 700 /bin/hotspot.sh
 echo "*/30 * * * * root /bin/bash /bin/hotspot.sh" > /etc/cron.d/hotspot
+apt update
+apt install -y sshuttle
 ~~~
+
 
 ## Kubernetes setup
 
