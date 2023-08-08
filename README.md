@@ -1,6 +1,6 @@
 # SBU DCAI
 Distributed Computing for Artificial Intellegence over k8s.
-## Table of Contents
+## 📖 Table of Contents
 - [Network & Internet setup](#network--internet-setup)
 - [Kubernetes setup](#kubernetes-setup)
 - [GPU configuration for K8s](#gpu-configuration-for-k8s)
