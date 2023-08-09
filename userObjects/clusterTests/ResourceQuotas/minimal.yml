@@ -7,10 +7,10 @@ spec:
   hard:
     pods: "100"
     requests.cpu: 4
-    requests.memory: 5G
+    requests.memory: 9G
     requests.nvidia.com/gpu: 1 
     limits.cpu: 9
-    limits.memory: 9G
+    limits.memory: 16G
     limits.nvidia.com/gpu: 1 
       #    limits:
       #      cpu: 9

@@ -11,3 +11,18 @@ subjects:
   - apiGroup: "rbac.authorization.k8s.io"
     kind: User
     name: milad
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: subAdmin-system
+  namespace: kube-system
+roleRef:
+  apiGroup: "rbac.authorization.k8s.io"
+  kind: Role
+  name: "subAdmin-system"
+subjects:
+  - apiGroup: "rbac.authorization.k8s.io"
+    kind: User
+    name: milad
+

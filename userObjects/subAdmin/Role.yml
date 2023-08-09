@@ -35,3 +35,35 @@ rules:
       - "delete"
       - "update"
       - "watch"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: subAdmin-system
+  namespace: kube-system
+rules:
+  - apiGroups:
+    # core
+     - ""
+    resources:
+      - "pods"
+      - "services"
+      - "resourcequotas"
+      - "secrets"
+      - "configmaps"
+      - "events"
+      - "secrets"
+    verbs:
+      - "list"
+      - "get"
+      - "watch"
+  - apiGroups:
+     - "apps"
+    resources:
+      - "daemonsets"
+      - "deployments"
+      - "replicasets "
+    verbs:
+      - "list"
+      - "get"
+      - "watch"
