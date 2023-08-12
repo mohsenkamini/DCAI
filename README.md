@@ -9,7 +9,7 @@ Distributed Computing for Artificial Intellegence over k8s.
 - [Sub Admin access](#sub-admin-access)
 - [Cluster Backup](#cluster-backup)
 ## Network & Internet setup
-The following [file](https://github.com/mohsenkamini/SBU-DCAI/blob/main/network/hotspot.sh)(./network/hotspot.sh) will provide complete internet connection on hosts.
+The following [file](https://github.com/mohsenkamini/SBU-DCAI/blob/main/network/hotspot.sh) will provide complete internet connection on hosts.
 
 Make it run frequently:
 ~~~
