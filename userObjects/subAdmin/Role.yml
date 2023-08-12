@@ -69,3 +69,38 @@ rules:
       - "list"
       - "get"
       - "watch"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: subAdmin-gpu-operator
+  namespace: gpu-operator
+rules:
+  - apiGroups:
+    # core
+     - ""
+    resources:
+      - "pods"
+      - "pods/log"
+      - "services"
+      - "resourcequotas"
+      - "secrets"
+      - "configmaps"
+      - "events"
+      - "secrets"
+    verbs:
+      - "list"
+      - "get"
+      - "watch"
+  - apiGroups:
+     - "apps"
+    resources:
+      - "daemonsets"
+      - "deployments"
+      - "replicasets "
+    resourceNames: 
+      - nvidia-dcgm-exporter
+    verbs:
+      - "list"
+      - "get"
+      - "watch"

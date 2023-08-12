@@ -26,3 +26,18 @@ subjects:
     kind: User
     name: milad
 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: subAdmin-gpu-operator
+  namespace: gpu-operator
+roleRef:
+  apiGroup: "rbac.authorization.k8s.io"
+  kind: Role
+  name: "subAdmin-gpu-operator"
+subjects:
+  - apiGroup: "rbac.authorization.k8s.io"
+    kind: User
+    name: milad
+
