@@ -9,6 +9,8 @@ rules:
      - ""
     resources:
       - "pods"
+      - "pods/log"
+      - "pods/portforward"
       - "services"
       - "resourcequotas"
       - "secrets"

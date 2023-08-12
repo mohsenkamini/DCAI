@@ -5,7 +5,7 @@ metadata:
   namespace: cluster-test
 spec:
   hard:
-    pods: "100"
+    pods: "200"
     requests.cpu: 4
     requests.memory: 9G
     requests.nvidia.com/gpu: 1 
