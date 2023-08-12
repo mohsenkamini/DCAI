@@ -51,3 +51,12 @@ cp ./backup/* /usr/bin/
 echo "48 23 * * * root /usr/bin/cluster-get-all-backup.sh /usr/share/backups/get-all/
 49 23 * * 5 root /usr/bin/keep-n-backups.sh /usr/share/backups/get-all/ 8 " > /etc/cron.d/backup
 ~~~
+
+## Private Docker Registry
+To use images in private registry do as following:
+~~~
+docker pull <image> # pull the image locally
+docker image tag <image> registry.mohsenkamini.ir:5000/<image>
+docker image push registry.mohsenkamini.ir:5000/<image> # push it to the private reg
+~~~
+
