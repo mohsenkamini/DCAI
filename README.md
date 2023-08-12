@@ -8,6 +8,7 @@ Distributed Computing for Artificial Intellegence over k8s.
   - [Nvidia GPU operator](#nvidia-gpu-operator)
 - [Sub Admin access](#sub-admin-access)
 - [Cluster Backup](#cluster-backup)
+- [Private Docker Registry](private-docker-registry)
 ## Network & Internet setup
 The following [file](https://github.com/mohsenkamini/SBU-DCAI/blob/main/network/hotspot.sh) will provide complete internet connection on hosts.
 
