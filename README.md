@@ -2,6 +2,11 @@
 Distributed Computing for Artificial Intellegence over k8s.
 ## 📖 Table of Contents
 - [Network & Internet setup](#network--internet-setup)
+- [Monitoring](#monitoring)
+  -[Prometheus](#prometheus)
+  -[Grfana](#grafana)
+  -[cAdvisor](#cadvisor)
+  -[Node Exporter](#node-exporter)
 - [Kubernetes setup](#kubernetes-setup)
 - [GPU configuration for K8s](#gpu-configuration-for-k8s)
   - [Node Feature Discovery (NFD)](#node-feature-discovery-nfd)
@@ -21,6 +26,9 @@ echo "*/30 * * * * root /bin/bash /bin/hotspot.sh" > /etc/cron.d/hotspot
 apt update
 apt install -y sshuttle
 ~~~
+
+## Monitoring
+
 
 
 ## Kubernetes setup
