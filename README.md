@@ -38,6 +38,21 @@ These are the needed documents to implement gpu operator:
 - [about the nvidia gpu operator](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator)
 - [getting started](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html)
 
+~~~
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+    && chmod 700 get_helm.sh \
+    && ./get_helm.sh
+~~~
+~~~
+helm repo add nvidia https://helm.ngc.nvidia.com/nvidia \
+    && helm repo update
+~~~
+~~~
+helm install --debug --wait --generate-name --timeout 50m \
+     -n gpu-operator --create-namespace      nvidia/gpu-operator
+~~~
+
+
 ## Sub Admin access
 The `userObjects` directory contains any kubernetes objects that are created by us. The access for a subAdmin is granted with roles and cluster roles within the [subAdmin directory](./userObjects/subAdmin).
 
