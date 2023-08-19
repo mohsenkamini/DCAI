@@ -29,7 +29,13 @@ apt install -y sshuttle
 
 ## Monitoring
 
+### Prometheus
 
+### Grafana
+
+### cAdvisor
+
+### Node exporter
 
 ## Kubernetes setup
 
