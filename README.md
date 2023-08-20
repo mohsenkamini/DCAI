@@ -43,6 +43,8 @@ http://prometheus:9090
 
 ### cAdvisor
 
+Use this [repo](https://github.com/google/cadvisor)
+
 ### Node exporter
 
 for Node Exporter run this :
@@ -53,6 +55,8 @@ tar xvfz node_exporter-*.*-amd64.tar.gz
 cd node_exporter-*.*-amd64
 ./node_exporter
 ~~~
+
+You can use this [repo](https://github.com/prometheus/node_exporter)
 
 ## Kubernetes setup
 
