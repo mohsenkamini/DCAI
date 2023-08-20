@@ -53,9 +53,9 @@ Use this [repo](https://github.com/google/cadvisor).
 for Node Exporter run this :
 
 ~~~
-wget https://github.com/prometheus/node_exporter/releases/download/v*/node_exporter-*.*-amd64.tar.gz
-tar xvfz node_exporter-*.*-amd64.tar.gz
-cd node_exporter-*.*-amd64
+wget https://github.com/prometheus/node_exporter/releases/download/v*/node_exporter-*.*-amd64.tar.gz #replace version
+tar xvfz node_exporter-*.*-amd64.tar.gz #replace version
+cd node_exporter-*.*-amd64 #replace version
 ./node_exporter
 ~~~
 
