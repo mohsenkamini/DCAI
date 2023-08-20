@@ -29,6 +29,8 @@ apt install -y sshuttle
 
 ## Monitoring
 
+This [file](https://github.com/mohsenkamini/SBU-DCAI/userObjects/monitoring/docker-compose.yml) will run docker compose for Prometheus, Grafana and cAdvisor.
+
 ### Prometheus
 
 ### Grafana
@@ -36,6 +38,15 @@ apt install -y sshuttle
 ### cAdvisor
 
 ### Node exporter
+
+for Node Exporter run this :
+
+~~~
+wget https://github.com/prometheus/node_exporter/releases/download/v*/node_exporter-*.*-amd64.tar.gz
+tar xvfz node_exporter-*.*-amd64.tar.gz
+cd node_exporter-*.*-amd64
+./node_exporter
+~~~
 
 ## Kubernetes setup
 
