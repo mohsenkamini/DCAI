@@ -37,6 +37,10 @@ Configuration file is in /etc/prometheus/[prometheus.yml](https://github.com/moh
 
 ### Grafana
 
+Add new Connection for Prometheus in Home > Connections > Data sources > Prometheus :
+
+http://prometheus:9090
+
 ### cAdvisor
 
 ### Node exporter
