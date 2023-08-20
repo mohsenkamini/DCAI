@@ -75,4 +75,3 @@ docker pull <image> # pull the image locally
 docker image tag <image> registry.mohsenkamini.ir:5000/<image>
 docker image push registry.mohsenkamini.ir:5000/<image> # push it to the private reg
 ~~~
-
