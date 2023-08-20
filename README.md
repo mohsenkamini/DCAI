@@ -2,6 +2,7 @@
 Distributed Computing for Artificial Intellegence over k8s.
 ## 📖 Table of Contents
 - [Network & Internet setup](#network--internet-setup)
+- [Gitlab](#gitlab)
 - [Monitoring](#monitoring)
   - [Prometheus](#prometheus)
   - [Grfana](#grafana)
@@ -27,6 +28,8 @@ apt update
 apt install -y sshuttle
 ~~~
 
+## Gitlab
+
 ## Monitoring
 
 This [file](https://github.com/mohsenkamini/SBU-DCAI/blob/milad/userObjects/monitoring/docker-compose.yml) will run docker compose for Prometheus, Grafana and cAdvisor.
@@ -43,7 +46,7 @@ http://prometheus:9090
 
 ### cAdvisor
 
-Use this [repo](https://github.com/google/cadvisor)
+Use this [repo](https://github.com/google/cadvisor).
 
 ### Node exporter
 
@@ -56,7 +59,7 @@ cd node_exporter-*.*-amd64
 ./node_exporter
 ~~~
 
-You can use this [repo](https://github.com/prometheus/node_exporter)
+You can also use this [repo](https://github.com/prometheus/node_exporter).
 
 ## Kubernetes setup
 
