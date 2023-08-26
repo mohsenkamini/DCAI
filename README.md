@@ -10,18 +10,38 @@ Distributed Computing for Artificial Intellegence over k8s.
 - [Cluster Backup](#cluster-backup)
 - [Private Docker Registry](private-docker-registry)
 ## Network & Internet setup
-The following [file](https://github.com/mohsenkamini/SBU-DCAI/blob/main/network/hotspot.sh) will provide complete internet connection on hosts.
+The following [file](./network/hotspot.sh) will provide complete internet connection on hosts.
 
-Make it run frequently:
+Do this:
 ~~~
-cp ./network/hotspot.sh /bin/hotspot.sh
-chown root:root /bin/hotspot.sh
-chmod 700 /bin/hotspot.sh
-echo "*/30 * * * * root /bin/bash /bin/hotspot.sh" > /etc/cron.d/hotspot
-apt update
-apt install -y sshuttle
+cp ./network/hotspot.sh ./network/.hotspot.sh
+vi ./network/.hotspot.sh
 ~~~
+Add proper credentials to it, and run the following to setup network on nodes using `ansible`:
+~~~
+cd ./ansible/
+vi inventory
+~~~
+An example for inventory could be like this: 
+~~~
+[masters]
+master1 ansible_host=192.168.56.17
 
+[workers]
+worker01 ansible_host=192.168.56.18
+worker02 ansible_host=192.168.56.22
+
+[all:vars]
+host_key_checking = false
+ansible_user=CHANGEME
+ansible_ssh_port=CHANGEME
+ansible_become=yes
+ansible_ssh_private_key_file=CHANGEME
+~~~
+And finally: 
+~~~
+ansible-playbook -i ./inventory ./plays/network-setup.yml
+~~~
 
 ## Kubernetes setup
 
