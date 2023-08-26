@@ -8,6 +8,8 @@ metadata:
 spec:
   template:
     spec:
+      imagePullSecrets:
+        - name: admin-registry.mohsenkamini.ir-5000
       restartPolicy: Never
         #nodeSelector:
         #  name: worker02

@@ -14,9 +14,11 @@ spec:
         app: node-exporter
         type: monitoring-agent
     spec:
+      imagePullSecrets:
+        - name: admin-registry.mohsenkamini.ir-5000
       containers:
         - name: node-exporter-container
-          image: bitnami/node-exporter:latest
+          image: registry.mohsenkamini.ir:5000/bitnami/node-exporter:latest
           resources:
             requests:
               cpu: "100m"
@@ -24,7 +26,7 @@ spec:
             limits:
               cpu: "200m"
               memory: "20M"
-  replicas: 20
+  replicas: 1
   selector:                     # only contain these pods in replicaset
     matchLabels:
       app: node-exporter

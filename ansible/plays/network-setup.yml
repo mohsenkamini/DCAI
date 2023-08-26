@@ -1,0 +1,33 @@
+- hosts: master1
+  vars:
+    dst: "/usr/bin/hotspot.sh"
+      
+  tasks:
+    - name: push hotspot.sh to "{{ dst }}"
+      ansible.builtin.copy:
+        ### mind that because this files contains secrets, it is hidden and not pushed to git.(note the dot before src file below)
+        src: "{{ NETWORK_CONF_DIR }}.hotspot.sh"
+        dest: "{{ dst }}"
+        backup: yes
+        owner: root
+        group: root
+        mode: '700'
+
+    - name: run it to be affected
+      shell: hotspot.sh
+
+    - name: check if it is doing fine (ping 1.1.1.1)
+      shell: ping -c 4 1.1.1.1
+
+    - name: add cron job
+      shell: echo "*/30 * * * * root {{ dst }}" > /etc/cron.d/hotspot
+
+    - name: apt update
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: install sshuttle
+      ansible.builtin.apt:
+        name: "sshuttle"
+        allow_downgrade: true
+        allow_change_held_packages: true
