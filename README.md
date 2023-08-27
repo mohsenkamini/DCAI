@@ -25,11 +25,15 @@ vi inventory
 An example for inventory could be like this: 
 ~~~
 [masters]
-master1 ansible_host=192.168.56.17
+master1 ansible_host=master1.sbu-dcai.ir
 
 [workers]
-worker01 ansible_host=192.168.56.18
-worker02 ansible_host=192.168.56.22
+worker01 ansible_host=worker01.sbu-dcai.ir
+worker02 ansible_host=worker02.sbu-dcai.ir
+
+[others]
+registry ansible_host=registry.sbu-dcai.ir
+monitoring ansible_host=monitoring.sbu-dcai.ir
 
 [all:vars]
 host_key_checking = false
