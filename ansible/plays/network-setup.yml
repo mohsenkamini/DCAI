@@ -1,6 +1,8 @@
-- hosts: master1
+- hosts: all
   vars:
     dst: "/usr/bin/hotspot.sh"
+    secret_src: "/root/.ssh/SBU_HPC"
+    secret_dst: "/root/.ssh/sshuttle.key"
       
   tasks:
     - name: push hotspot.sh to "{{ dst }}"
@@ -22,12 +24,42 @@
     - name: add cron job
       shell: echo "*/30 * * * * root {{ dst }}" > /etc/cron.d/hotspot
 
-    - name: apt update
-      ansible.builtin.apt:
-        update_cache: yes
+        #- name: apt update
+        #  ansible.builtin.apt:
+        #    update_cache: yes
 
     - name: install sshuttle
       ansible.builtin.apt:
         name: "sshuttle"
         allow_downgrade: true
         allow_change_held_packages: true
+
+    - name: sshuttle systemd service file transfer
+      ansible.builtin.copy:
+        src: "{{ CONF_DIR }}sshuttle.service"
+        dest: "/etc/systemd/system/"
+        backup: yes
+        owner: root
+        group: root
+        mode: "600"
+
+    - name: sshuttle ssh secret transfer
+      ansible.builtin.copy:
+        ### mind that because this files contains secrets, it is hidden and not pushed to git.
+        src: "{{ secret_src }}"
+        dest: "{{ secret_dst }}"
+        backup: yes
+        owner: root
+        group: root
+        mode: "400"
+
+    - name: sshutle systemd service enable
+      ansible.builtin.systemd:
+        daemon_reload: true
+        state: started
+        name: sshuttle
+        enabled: true
+
+    
+
+    
