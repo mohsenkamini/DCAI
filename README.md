@@ -54,6 +54,14 @@ Created initial cluster using this [repo](https://github.com/mohsenkamini/Gettin
 
 ## GPU configuration for K8s
 
+### GPU drivers
+Before adding a worker node with GPU on it, install nvidia drives using `apt`. You read more on that on [this article](https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux).
+
+Finally test if everything is ready:
+~~~
+nvidia-smi
+~~~
+
 ### Node Feature Discovery (NFD)
 Installed using this [repo](https://github.com/kubernetes-sigs/node-feature-discovery).
 
