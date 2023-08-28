@@ -8,7 +8,6 @@ Distributed Computing for Artificial Intellegence over k8s.
   - [Nvidia GPU operator](#nvidia-gpu-operator)
 - [Sub Admin access](#sub-admin-access)
 - [Cluster Backup](#cluster-backup)
-- [Gitlab](#gitlab)
 - [Monitoring](#monitoring)
 - [Private Docker Registry](private-docker-registry)
 ## Network & Internet setup
