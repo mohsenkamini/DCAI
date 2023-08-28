@@ -4,6 +4,7 @@ Distributed Computing for Artificial Intellegence over k8s.
 - [Network & Internet setup](#network--internet-setup)
 - [Kubernetes setup](#kubernetes-setup)
 - [GPU configuration for K8s](#gpu-configuration-for-k8s)
+  - [Drivers](#drivers)
   - [Node Feature Discovery (NFD)](#node-feature-discovery-nfd)
   - [Nvidia GPU operator](#nvidia-gpu-operator)
 - [Sub Admin access](#sub-admin-access)
@@ -54,7 +55,7 @@ Created initial cluster using this [repo](https://github.com/mohsenkamini/Gettin
 
 ## GPU configuration for K8s
 
-### GPU drivers
+### Drivers
 Before adding a worker node with GPU on it, install nvidia drives using `apt`. You read more on that on [this article](https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux).
 
 Finally test if everything is ready:
