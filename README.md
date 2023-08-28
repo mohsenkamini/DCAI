@@ -80,8 +80,6 @@ The `userObjects` directory contains any kubernetes objects that are created by 
 
 The certificates are handled within the [certificates directory](./userObjects/certificates)
 
-## Gitlab
-
 ## Monitoring
 
 You can use this [repo](https://github.com/Mi-Kho/monitoring.git).
