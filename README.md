@@ -8,6 +8,7 @@ Distributed Computing for Artificial Intellegence over k8s.
   - [Nvidia GPU operator](#nvidia-gpu-operator)
 - [Sub Admin access](#sub-admin-access)
 - [Cluster Backup](#cluster-backup)
+- [Monitoring](#monitoring)
 - [Private Docker Registry](private-docker-registry)
 ## Network & Internet setup
 The following [file](./network/hotspot.sh) will provide complete internet connection on hosts.
@@ -81,6 +82,10 @@ helm install --debug --wait --generate-name --timeout 50m \
 The `userObjects` directory contains any kubernetes objects that are created by us. The access for a subAdmin is granted with roles and cluster roles within the [subAdmin directory](./userObjects/subAdmin).
 
 The certificates are handled within the [certificates directory](./userObjects/certificates)
+
+## Monitoring
+
+You can use this [repo](https://github.com/Mi-Kho/monitoring.git).
 
 ## Cluster Backup
 The scripts to get backups are in [this directory](./backup/). currently only support a `kubectl get all -A` as backup.
