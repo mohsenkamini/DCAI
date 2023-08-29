@@ -40,4 +40,17 @@ subjects:
   - apiGroup: "rbac.authorization.k8s.io"
     kind: User
     name: milad
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: subAdmin-gitlab
+  namespace: gitlab
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: "subAdmin-gitlab"
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: milad
 
