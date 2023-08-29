@@ -58,9 +58,20 @@ Created initial cluster using this [repo](https://github.com/mohsenkamini/Gettin
 ### Drivers
 Before adding a worker node with GPU on it, install nvidia drives using `apt`. You can read more on that on [this article](https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-20-04-focal-fossa-linux).
 
+> Note: only install drivers without prefixes. This could be a valid example: `nvidia-driver-470`
+> 
+> And here's an invalid one: `nvidia-driver-535-server-open`
+
 Finally test if everything is ready:
 ~~~
 nvidia-smi
+~~~
+
+> Note: a common issue is that when you install this driver, `gdm3` also gets installed and causes your server to be asleep after an idle timeout. So make sure you delete it.
+
+~~~
+apt remove gdm3
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ~~~
 
 ### Node Feature Discovery (NFD)
