@@ -94,6 +94,9 @@ rules:
     verbs:
       - "list"
       - "get"
+      - "create"
+      - "delete"
+      - "update"
       - "watch"
   - apiGroups:
      - "apps"
@@ -106,6 +109,9 @@ rules:
     verbs:
       - "list"
       - "get"
+      - "create"
+      - "delete"
+      - "update"
       - "watch"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
