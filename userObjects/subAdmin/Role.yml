@@ -85,12 +85,17 @@ rules:
       - "endpoints"
       - "pods"
       - "pods/log"
-      - "services"
       - "resourcequotas"
       - "secrets"
       - "configmaps"
       - "events"
       - "secrets"
+    verbs:
+      - "list"
+      - "get"
+      - "watch"
+    resources:
+      - "services"
     verbs:
       - "list"
       - "get"
