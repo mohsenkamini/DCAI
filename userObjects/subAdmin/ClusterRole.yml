@@ -9,7 +9,6 @@ rules:
     resources:
       - "nodes"
     verbs:
-      - "patch"
       - "list"
       - "get"
       - "watch"
