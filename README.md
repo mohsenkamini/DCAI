@@ -128,7 +128,11 @@ docker image push registry.mohsenkamini.ir:5000/<image> # push it to the private
 
 ## Gitlab
 
+At first make a gitlab directory in your home directory and add this line to your .bashrc file:
 
+~~~
+export GITLAB_HOME=$HOME/gitlab
+~~~
 
 Docker compose :
 
