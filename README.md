@@ -143,7 +143,7 @@ services:
     container_name: gitlab
     image: 'registry.mohsenkamini.ir:5000/gitlab/gitlab-ce:16.3.0-ce.0'
     restart: always
-    hostname: 'gitlab.linuxmi.ir'
+    hostname: 'gitlab.example.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://gitlab.example.com'
