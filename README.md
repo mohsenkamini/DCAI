@@ -129,3 +129,34 @@ docker image push registry.mohsenkamini.ir:5000/<image> # push it to the private
 ## Gitlab
 
 
+
+Docker compose :
+
+~~~
+version: '3.6'
+services:
+  web:
+    container_name: gitlab
+    image: 'registry.mohsenkamini.ir:5000/gitlab/gitlab-ce:16.3.0-ce.0'
+    restart: always
+    hostname: 'gitlab.linuxmi.ir'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.example.com'
+        # Add any other gitlab.rb configuration here, each on its own line
+        nginx['enable'] = true
+        nginx['client_max_body_size'] = '250m'
+        nginx['redirect_http_to_https'] = true
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.example.com.crt"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.example.com.key"
+        nginx['ssl_protocols'] = "TLSv1.1 TLSv1.2 TLSv1.3"
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+  ~~~
