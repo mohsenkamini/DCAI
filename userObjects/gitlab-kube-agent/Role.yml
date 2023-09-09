@@ -1,0 +1,33 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: gitlab-kube-agent
+  namespace: gitlab
+rules:
+  - apiGroups:
+    # core
+     - ""
+    resources:
+      - "pods"
+      - "services"
+      - "resourcequotas"
+      - "configmaps"
+      - "secrets"
+      - "jobs"
+    verbs:
+      - "patch"
+      - "list"
+      - "get"
+      - "create"
+      - "delete"
+      - "update"
+      - "watch"
+  - apiGroups:
+     - "apps"
+    resources:
+      - "deployments"
+    verbs:
+      - "get"
+      - "patch"
+      - "create"
+      - "update"

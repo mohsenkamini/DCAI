@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: workers
   vars:
     dst: "/usr/bin/hotspot.sh"
     secret_src: "/root/.ssh/SBU_HPC"

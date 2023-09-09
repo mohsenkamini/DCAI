@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: gitlab-agent:dcai-gitlab-agent-gitlab-kube-agent
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: gitlab-kube-agent
+subjects:
+- kind: ServiceAccount
+  name: dcai-gitlab-agent
+  namespace: gitlab-agent

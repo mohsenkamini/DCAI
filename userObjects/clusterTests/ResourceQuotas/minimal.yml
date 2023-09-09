@@ -6,12 +6,12 @@ metadata:
 spec:
   hard:
     pods: "200"
-    requests.cpu: 4
-    requests.memory: 9G
-    requests.nvidia.com/gpu: 1 
-    limits.cpu: 9
-    limits.memory: 16G
-    limits.nvidia.com/gpu: 1 
+    requests.cpu: 8
+    requests.memory: 30G
+    requests.nvidia.com/gpu: 2 
+    limits.cpu: 12
+    limits.memory: 50G
+    limits.nvidia.com/gpu: 2 
       #    limits:
       #      cpu: 9
       #      memory: 9G
