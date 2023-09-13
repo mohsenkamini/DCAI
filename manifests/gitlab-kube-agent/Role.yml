@@ -9,12 +9,7 @@ rules:
      - ""
     resources:
       - "pods"
-      - "services"
-      - "resourcequotas"
-      - "configmaps"
-      - "secrets"
-      - "jobs"
-      - "jobs.batch"
+      - "pods/log"
     verbs:
       - "patch"
       - "list"

@@ -1,0 +1,11 @@
+- hosts: workers
+  vars:
+      
+  tasks:
+    - name: install nfs-common
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 86400
+        name: "nfs-common"
+        allow_downgrade: true
+        allow_change_held_packages: true
