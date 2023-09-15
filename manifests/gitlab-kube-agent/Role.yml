@@ -11,22 +11,7 @@ rules:
       - "pods"
       - "pods/log"
     verbs:
-      - "patch"
-      - "list"
       - "get"
-      - "create"
-      - "delete"
-      - "update"
-      - "watch"
-  - apiGroups:
-     - "apps"
-    resources:
-      - "deployments"
-    verbs:
-      - "get"
-      - "patch"
-      - "create"
-      - "update"
   - apiGroups:
     # core
      - "batch"
@@ -34,7 +19,6 @@ rules:
       - "jobs"
     verbs:
       - "patch"
-      - "list"
       - "get"
       - "create"
       - "delete"
