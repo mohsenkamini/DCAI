@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: basecicd-450wq
+  namespace: cluster-test
+  labels:
+    implementedBy: Automated-CICD
+    type: gpu
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+        - name: cicd-registry.mohsenkamini.ir-5000
+      restartPolicy: Never
+      volumes:
+      - name: basecicd-450wq
+        emptyDir: {}
+      initContainers:
+        - name: basecicd-450wq-init
+          image: registry.mohsenkamini.ir:5000/dcai/basecicd:6074f8a1
+          command: ["bash", "-c", "cp -rf `find /basecicd/ | cut -d \"/\" -f1,2,3 | uniq | grep /basecicd/. | xargs ` /mnt/basecicd"]
+          volumeMounts:
+          - mountPath: /mnt/basecicd
+            name: basecicd-450wq
+        - name: basecicd-450wq
+          command: ["python", "main.py"]
+          volumeMounts:
+          - mountPath: /basecicd
+            name: basecicd-450wq
+          image: registry.mohsenkamini.ir:5000/dcai/basecicd:6074f8a1
+      containers:
+       - name: basecicd-450wq-git
+         command: ['sh', '-c', "mkdir ~/.ssh ; chmod 700 ~/.ssh ;  echo LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaVwpReU5UVXhPUUFBQUNBd1hQUkY4cHc0MnNLLy9PN0xicCtiRHR6OWwxb2htN3BicXkxNzNnNzBvUUFBQUtEM0pJZVM5eVNICmtnQUFBQXR6YzJndFpXUXlOVFV4T1FBQUFDQXdYUFJGOHB3NDJzSy8vTzdMYnArYkR0ejlsMW9obTdwYnF5MTczZzcwb1EKQUFBRUQxQ0pWWlg5L3VaVHFrdzY1VWhIN3B5aCt5ZE9XOXRKdUgxZXpCa3oxb3pUQmM5RVh5bkRqYXdyLzg3c3R1bjVzTwozUDJYV2lHYnVsdXJMWHZlRHZTaEFBQUFHbE5DVlNCSGFYUnNZV0lnVUhWemFDQklaV3h3WlhJZ1FtOTBBUUlECi0tLS0tRU5EIE9QRU5TU0ggUFJJVkFURSBLRVktLS0tLQo= | base64 -d > ~/.ssh/id_rsa ; chmod 400 ~/.ssh/id_rsa ; cd /basecicd ; git config --global user.name 'gitlabpusher'; git config --global user.email 'gitlabpusher@mohsenkamini.ir'  ; sed -i 's/.*sslCAInfo.*//g' .git/config ;  git branch pipelineGenerated-450wq/6074f8a1 ; git checkout  pipelineGenerated-450wq/6074f8a1 ;  git add -A ; git commit -m 'results for pipeline basecicd-450wq' ; git remote add origin-ssh git@gitlab.sbu.ac.ir:dcai/basecicd.git ; GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' git push origin-ssh  pipelineGenerated-450wq/6074f8a1"]
+         volumeMounts:
+         - mountPath: /basecicd
+           name: basecicd-450wq
+         image: registry.mohsenkamini.ir:5000/alpine/git-customized:2.40.1

@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: builder2
   vars:
     dst: "/usr/bin/hotspot.sh"
     secret_src: "/root/.ssh/SBU_HPC"
@@ -24,9 +24,9 @@
     - name: add cron job
       shell: echo "*/30 * * * * root {{ dst }}" > /etc/cron.d/hotspot
 
-        #- name: apt update
-        #  ansible.builtin.apt:
-        #    update_cache: yes
+    - name: apt update
+      ansible.builtin.apt:
+        update_cache: yes
 
     - name: install sshuttle
       ansible.builtin.apt:
@@ -56,9 +56,9 @@
     - name: sshutle systemd service enable
       ansible.builtin.systemd:
         daemon_reload: true
-        state: started
+        state: stopped
         name: sshuttle
-        enabled: true
+        enabled: false
 
     
 

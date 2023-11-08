@@ -11,3 +11,16 @@ subjects:
 - kind: ServiceAccount
   name: dcai-gitlab-agent
   namespace: gitlab-agent-dcai
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gitlab-agent:dcai-admin-gitlab-agent-gitlab-kube-agent-admin
+  namespace: gitlab
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitlab-kube-agent-admin
+subjects:
+- kind: ServiceAccount
+  name: dcai-admin-gitlab-agent
+  namespace: gitlab-agent-dcai-admin

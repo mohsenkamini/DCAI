@@ -18,12 +18,12 @@ spec:
       containers:
         - name: mnist-test
           image: registry.mohsenkamini.ir:5000/test/mnist-test:0.0.0
-          resources:
-            requests:
-              cpu: "1"
-              memory: "4G"
-              nvidia.com/gpu: 1
-            limits:
-              cpu: "2"
-              memory: "12G"
-              nvidia.com/gpu: 1
+            #          resources:
+            #            requests:
+            #              cpu: "1"
+            #              memory: "4G"
+            #              nvidia.com/gpu: 1
+            #            limits:
+            #              cpu: "2"
+            #              memory: "12G"
+            #              nvidia.com/gpu: 1
