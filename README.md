@@ -67,6 +67,12 @@ Finally test if everything is ready:
 nvidia-smi
 ~~~
 
+> Make sure to fix nvidia-driver's version
+
+~~~
+apt-mark hold nvidia-driver-470
+~~~
+
 > Note: a common issue is that when you install this driver, `gdm3` also gets installed and causes your server to be asleep after an idle timeout. So make sure you delete it.
 
 ~~~
