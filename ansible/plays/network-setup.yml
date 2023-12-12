@@ -1,4 +1,4 @@
-- hosts: builder2
+- hosts: all
   vars:
     dst: "/usr/bin/hotspot.sh"
     secret_src: "/root/.ssh/SBU_HPC"
@@ -53,7 +53,7 @@
         group: root
         mode: "400"
 
-    - name: sshutle systemd service enable
+    - name: sshutle systemd service disable and stopped
       ansible.builtin.systemd:
         daemon_reload: true
         state: stopped

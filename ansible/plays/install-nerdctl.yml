@@ -1,0 +1,61 @@
+---
+- name: Install nerdctl
+  hosts: all
+  become: true
+  vars:
+    script_src: "pullPause.sh"
+    script_dest: "/usr/local/bin/pullPause.sh"
+    nerdctl_tarball_url: "https://github.com/containerd/nerdctl/releases/download/v1.7.2/nerdctl-1.7.2-linux-amd64.tar.gz"
+    nerdctl_tarball_dest: "/tmp/nerdctl.tar.gz"
+    nerdctl_install_dir: "/usr/local/bin"
+
+  tasks:
+    - name: Check if nerdctl is already installed
+      command: nerdctl --version
+      register: nerdctl_installed
+      changed_when: false
+      failed_when: false
+
+    - name: Download nerdctl tarball
+      ansible.builtin.get_url:
+        url: "{{ nerdctl_tarball_url }}"
+        dest: "{{ nerdctl_tarball_dest }}"
+      when: nerdctl_installed.rc != 0 or not (nerdctl_tarball_dest is exists)
+
+    - name: Extract nerdctl tarball
+      ansible.builtin.unarchive:
+        src: "{{ nerdctl_tarball_dest }}"
+        dest: "{{ nerdctl_install_dir }}"
+        remote_src: yes
+      when: nerdctl_installed.rc != 0 or not (nerdctl_tarball_dest is exists)
+
+    - name: Set executable permissions for nerdctl
+      ansible.builtin.file:
+        path: "{{ nerdctl_install_dir }}/nerdctl"
+        mode: "+x"
+      when: nerdctl_installed.rc != 0 or not (nerdctl_tarball_dest is exists)
+
+    - name: Verify nerdctl installation
+      command: nerdctl --version
+      register: nerdctl_version
+      changed_when: false
+
+    - name: Display nerdctl version
+      debug:
+        var: nerdctl_version.stdout_lines
+
+    - name: Copy bash script
+      copy:
+        content: |
+          #!/bin/bash
+          nerdctl -n k8s.io image pull registry.mohsenkamini.ir:5000/pause:3.6
+          nerdctl -n k8s.io image tag registry.mohsenkamini.ir:5000/pause:3.6 registry.k8s.io/pause:3.6
+        dest: "{{ script_dest }}"
+        mode: 0755
+
+    - name: Create cron job
+      cron:
+        name: pullPause
+        user: root
+        minute: "*/30"
+        job: "{{ script_dest }}"
