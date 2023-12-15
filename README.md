@@ -16,7 +16,6 @@ The following [file](./network/hotspot.sh) will provide complete internet connec
 
 Do this:
 ~~~
-cp ./network/hotspot.sh ./network/.hotspot.sh
 vi ./network/.hotspot.sh
 ~~~
 Add proper credentials to it, and run the following to setup network on nodes using `ansible`:
