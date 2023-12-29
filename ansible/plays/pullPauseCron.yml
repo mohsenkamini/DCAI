@@ -1,0 +1,25 @@
+---
+- name: implement a script to pull pause image from a non sanctioned registry and cron it
+  hosts: workers
+  become: true
+  vars:
+    script_src: "pullPause.sh"
+    script_dest: "/usr/local/bin/pullPause.sh"
+    registry: "registry.mohsenkamini.ir:5000"
+  tasks:
+    - name: Copy bash script
+      copy:
+        content: |
+          #!/bin/bash
+          PATH="$PATH:/usr/local/bin"
+          nerdctl -n k8s.io image pull "{{ registry }}"/pause:3.6
+          nerdctl -n k8s.io image tag "{{ registry }}"/pause:3.6 registry.k8s.io/pause:3.6
+        dest: "{{ script_dest }}"
+        mode: 0755
+
+    - name: Create cron job
+      cron:
+        name: pullPause
+        user: root
+        minute: "*/15"
+        job: "{{ script_dest }} > /tmp/pullPause.log 2>&1"

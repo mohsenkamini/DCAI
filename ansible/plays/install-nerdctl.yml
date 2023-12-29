@@ -1,10 +1,10 @@
 ---
 - name: Install nerdctl
-  hosts: all
+  hosts: kube_node
   become: true
   vars:
-    script_src: "pullPause.sh"
-    script_dest: "/usr/local/bin/pullPause.sh"
+    #    script_src: "pullPause.sh"
+    #    script_dest: "/usr/local/bin/pullPause.sh"
     nerdctl_tarball_url: "https://github.com/containerd/nerdctl/releases/download/v1.7.2/nerdctl-1.7.2-linux-amd64.tar.gz"
     nerdctl_tarball_dest: "/tmp/nerdctl.tar.gz"
     nerdctl_install_dir: "/usr/local/bin"
@@ -43,19 +43,3 @@
     - name: Display nerdctl version
       debug:
         var: nerdctl_version.stdout_lines
-
-    - name: Copy bash script
-      copy:
-        content: |
-          #!/bin/bash
-          nerdctl -n k8s.io image pull registry.mohsenkamini.ir:5000/pause:3.6
-          nerdctl -n k8s.io image tag registry.mohsenkamini.ir:5000/pause:3.6 registry.k8s.io/pause:3.6
-        dest: "{{ script_dest }}"
-        mode: 0755
-
-    - name: Create cron job
-      cron:
-        name: pullPause
-        user: root
-        minute: "*/30"
-        job: "{{ script_dest }}"

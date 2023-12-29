@@ -1,0 +1,33 @@
+---
+- name: Configure APT Proxy
+  hosts: all
+  become: yes
+
+  vars:
+    apt_proxy_host: 
+    apt_proxy_port: 
+  tasks:
+    - name: Create APT Config Directory
+      file:
+        path: /etc/apt
+        state: directory
+
+    - name: Touch APT Config File
+      file:
+        path: /etc/apt/apt.conf
+        state: touch
+        mode: '0644'
+
+    - name: Set APT Proxy Configuration
+      blockinfile:
+        path: /etc/apt/apt.conf
+        block: |
+          Acquire::http::Proxy "http://{{ apt_proxy_host }}:{{ apt_proxy_port }}/";
+          Acquire::https::Proxy "http://{{ apt_proxy_host }}:{{ apt_proxy_port }}/";
+          Acquire::ftp::Proxy "http://{{ apt_proxy_host }}:{{ apt_proxy_port }}/";
+      notify:
+        - reload apt config
+
+  handlers:
+    - name: reload apt config
+      shell: apt-get update
