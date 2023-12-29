@@ -11,6 +11,7 @@ rules:
       - "pods"
       - "pods/log"
       - "pods/exec"
+      - "events"
     verbs:
       - "get"
       - "create"
@@ -32,6 +33,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: gitlab-kube-agent-admin
+  # i think this is used for gitlab admin tasks. the one who gives permission, should already have those permissions.
 rules:
   - apiGroups:
     # core
@@ -68,6 +70,7 @@ rules:
       - "pods"
       - "pods/log"
       - "pods/exec"
+      - "events"
     verbs:
       - "create"
       - "get"
