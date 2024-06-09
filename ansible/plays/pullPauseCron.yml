@@ -12,6 +12,7 @@
         content: |
           #!/bin/bash
           PATH="$PATH:/usr/local/bin"
+          nerdctl login {{ REGISTRY_URL }} --username {{ REGISTRY_USER }} --password {{ REGISTRY_PASSWORD }}
           nerdctl -n k8s.io image pull "{{ registry }}"/pause:3.6
           nerdctl -n k8s.io image tag "{{ registry }}"/pause:3.6 registry.k8s.io/pause:3.6
         dest: "{{ script_dest }}"

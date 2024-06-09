@@ -1,6 +1,6 @@
 ---
 - name: Install nerdctl
-  hosts: kube_node
+  hosts: all
   become: true
   vars:
     #    script_src: "pullPause.sh"

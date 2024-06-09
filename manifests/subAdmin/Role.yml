@@ -128,7 +128,7 @@ metadata:
   namespace: gitlab
 rules:
 - apiGroups:
-  - '*'
+  - ""
   resources:
   - '*'
   verbs:
@@ -139,3 +139,37 @@ rules:
   - update
   - patch
   - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: mohadeseh
+  namespace: c2r4g0 
+rules:
+  - apiGroups:
+    # core
+     - ""
+    resources:
+      - "endpoints"
+      - "pods"
+      - "pods/log"
+      - "pods/portforward"
+      - "services"
+      - "events"
+    verbs:
+      - "list"
+      - "get"
+      - "delete"
+      - "create"
+      - "update"
+      - "watch"
+  - apiGroups:
+     - "batch"
+    resources:
+      - "jobs"
+    verbs:
+      - "list"
+      - "get"
+      - "create"
+      - "update"
+      - "watch"
