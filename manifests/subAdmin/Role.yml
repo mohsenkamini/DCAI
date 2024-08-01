@@ -182,6 +182,8 @@ metadata:
 rules:
 - apiGroups:
   - ""
+  - "apps"
+  - "apiextenstions.k8s.io"
   resources:
   - '*'
   verbs:
