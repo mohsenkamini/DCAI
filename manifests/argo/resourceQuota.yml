@@ -5,7 +5,7 @@ metadata:
   namespace: argo-events
 spec:
   hard:
-    pods: "200"
+    pods: "100"
     requests.cpu: "2.5"
     requests.memory: 2.5Gi
     limits.cpu: "3.5"
