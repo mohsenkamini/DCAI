@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ${name}
+  namespace: ${namespace}
+  labels:
+    implementedBy: ${implementedBy}
+    type: ${type}
+spec:
+  backoffLimit: 0
+  nodeSelector:
+    worker05: test
+  template:
+    spec:
+      imagePullSecrets:
+        - name: ${IMAGE_PULL_SECRET}
+      restartPolicy: Never
+      volumes:
+      - name: ${name}
+        emptyDir: {}
+      initContainers:
+        - name: ${name}-init
+          image: ${image}:${version}
+          command: ${initCommand}
+          volumeMounts:
+          - mountPath: ${initMountPath}
+            name: ${name}
+        - name: ${name}
+          command: ${command}
+          volumeMounts:
+          - mountPath: ${mountPath}
+            name: ${name}
+          image: ${image}:${version}
+      containers:
+       - name: ${name}-artifacts
+         command: ["sh", "-c", "python3 ./UploadArtifactsAndWaitOnIt.py --job-id ${downloadArtifactsJobId} --gitlab-url ${gitlabUrl} --gitlab-api-token $GITLAB_API_TOKEN --ci-project-id $CI_PROJECT_ID --ci-pipeline-id $CI_PIPELINE_ID"]
+         volumeMounts:
+         - mountPath: ${mountPath}
+           name: ${name}
+         image: ${pyImage}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata: 
+  name: argo-agents
+  namespace: argo-events
+spec:
+  hard:
+    pods: "200"
+    requests.cpu: "2.5"
+    requests.memory: 2.5Gi
+    limits.cpu: "3.5"
+    limits.memory: 3.5Gi
+
