@@ -1,5 +1,6 @@
-# SBU DCAI
+# DCAI
 Distributed Computing for Artificial Intellegence over k8s.
+The project is deployed in SBU site.
 ## 📖 Table of Contents
 - [Network & Internet setup](#network--internet-setup)
 - [Kubernetes setup](#kubernetes-setup)
